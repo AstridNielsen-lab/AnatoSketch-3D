@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnatoSketch 3D - IA Desenhista Anatomista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>AnatoSketch 3D</h1>
+                <span class="subtitle">IA Desenhista Anatomista</span>
+            </div>
+            <div class="controls">
+                <button id="clearCanvas" class="btn btn-secondary">
+                    <i class="fas fa-eraser"></i> Limpar
+                </button>
+                <button id="exportSVG" class="btn btn-primary">
+                    <i class="fas fa-download"></i> SVG
+                </button>
+                <button id="exportPNG" class="btn btn-primary">
+                    <i class="fas fa-image"></i> PNG
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar - Anatomical Parts -->
+            <aside class="sidebar left-sidebar">
+                <h3><i class="fas fa-list"></i> Partes Anatômicas</h3>
+                <div class="anatomical-buttons">
+                    <button class="anatomy-btn" data-part="skull">
+                        <i class="fas fa-skull"></i> Crânio
+                    </button>
+                    <button class="anatomy-btn" data-part="torax">
+                        <i class="fas fa-heart"></i> Tórax
+                    </button>
+                    <button class="anatomy-btn" data-part="arms">
+                        <i class="fas fa-hand-paper"></i> Braços
+                    </button>
+                    <button class="anatomy-btn" data-part="legs">
+                        <i class="fas fa-walking"></i> Pernas
+                    </button>
+                    <button class="anatomy-btn" data-part="skeleton">
+                        <i class="fas fa-bone"></i> Esqueleto
+                    </button>
+                    <button class="anatomy-btn" data-part="muscles">
+                        <i class="fas fa-dumbbell"></i> Músculos
+                    </button>
+                    <button class="anatomy-btn" data-part="nervous">
+                        <i class="fas fa-project-diagram"></i> Sistema Nervoso
+                    </button>
+                    <button class="anatomy-btn" data-part="cardiovascular">
+                        <i class="fas fa-heartbeat"></i> Cardiovascular
+                    </button>
+                    <button class="anatomy-btn" data-part="lymphatic">
+                        <i class="fas fa-stream"></i> Linfático
+                    </button>
+                </div>
+
+                <!-- Guided Study Mode -->
+                <div class="guided-study">
+                    <h3><i class="fas fa-graduation-cap"></i> Estudo Guiado</h3>
+                    <button id="startGuidedStudy" class="btn btn-accent">
+                        <i class="fas fa-play"></i> Iniciar Tour
+                    </button>
+                    <div id="studyProgress" class="study-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="progress-text">0/10 etapas</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <main class="canvas-area">
+                <canvas id="anatomyCanvas" width="800" height="600"></canvas>
+                <div class="canvas-controls">
+                    <div class="drawing-tools">
+                        <button id="penTool" class="tool-btn active" data-tool="pen">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="eraseTool" class="tool-btn" data-tool="erase">
+                            <i class="fas fa-eraser"></i>
+                        </button>
+                        <div class="color-picker">
+                            <input type="color" id="strokeColor" value="#00ff88">
+                            <label for="strokeColor">Cor</label>
+                        </div>
+                        <div class="stroke-width">
+                            <input type="range" id="strokeWidth" min="1" max="5" value="2">
+                            <label for="strokeWidth">Espessura</label>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar - AI Explanations -->
+            <aside class="sidebar right-sidebar">
+                <h3><i class="fas fa-robot"></i> IA Anatomista</h3>
+                <div class="ai-response" id="aiResponse">
+                    <div class="ai-message">
+                        <i class="fas fa-brain"></i>
+                        <p>Olá! Sou a AnatoSketch, sua IA especialista em desenho anatômico. 
+                        Digite um comando ou clique em uma parte do corpo para começar!</p>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <textarea id="userInput" placeholder="Digite seu comando (ex: 'desenhe o esqueleto humano em wireframe')"></textarea>
+                    <button id="sendCommand" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                </div>
+
+                <div class="anatomical-info">
+                    <h4><i class="fas fa-info-circle"></i> Informações Anatômicas</h4>
+                    <div id="anatomicalDetails" class="details-content">
+                        <p>Selecione uma parte do corpo para ver informações detalhadas.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-brain fa-spin"></i>
+                <p>IA processando...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
