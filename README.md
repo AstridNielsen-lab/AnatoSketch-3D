@@ -112,7 +112,7 @@ O projeto usa a API do Google Gemini com as seguintes configurações:
 
 ```javascript
 API_URL: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
-API_KEY: "AIzaSyDNSDXAocB4YPm4kY6v9L9C9OtJkQ1y-Uk"
+API_KEY: "SUA API AQUI"
 ```
 
 ## 💡 Exemplos de Uso
